@@ -1,503 +1,1562 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Untitled Document</title>
+<html>
+  <head>
+    <title>Home</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
-    <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
-    <!--<link href='https://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>-->
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/home/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="files/home/data.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
     <script type="text/javascript">
-        if (location.href.toString().indexOf('file://localhost/') == 0) {
-            location.href = location.href.toString().replace('file://localhost/', 'file:///');
-        }
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
-
-    <script type="text/javascript" src="resources/scripts/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="resources/scripts/player/splitter.js"></script>
-    <script type="text/javascript" src="resources/scripts/axutils.js"></script>
-    <script type="text/javascript" src="resources/scripts/player/axplayer.js"></script>
-    <script type="text/javascript" src="resources/scripts/messagecenter.js"></script>
-    <script type="text/javascript" src="data/document.js"></script>
-    <style type="text/css">
-
-#outerContainer {
-	width:1000px;
-	height:1500px;
-}
-
-.vsplitbar {
-    width: 3px;
-    /*background: #B9B9B9;*/
-    border-right: 1px solid #8f949a;
-}
-
-.vsplitbar:hover, .vsplitbar.active {
-    background: #8f949a;
-}
-
-#rightPanel {
-    background-color: White;
-}
-
-/*#leftPanel {
-    min-width: 120px;
-}*/
-
-.splitterMask {
-   position:absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
-   background-image: url(resources/images/transparent.gif);
-   z-index: 20000;
-}
-
-    </style>
-    <script type="text/javascript" language="JavaScript"><!--
-        var SITEMAP_COLLAPSE_VAR_NAME = 'c';
-        var PLUGIN_VAR_NAME = 'g';
-        var FOOTNOTES_VAR_NAME = 'fn';
-        var ADAPTIVE_VIEW_VAR_NAME = 'view';
-        var lastLeftPanelWidth = 295;
-        var toolBarOnly = true;
-
-        // isolate scope
-        (function() {
-            setUpController();
-            
-            var configuration = $axure.document.configuration;
-            var _settings = {};
-            _settings.projectId = configuration.prototypeId;
-            _settings.isAxshare = configuration.isAxshare;
-            _settings.loadFeedbackPlugin = configuration.loadFeedbackPlugin;
-            var cHash = getHashStringVar(SITEMAP_COLLAPSE_VAR_NAME);
-            _settings.startCollapsed = cHash == "1";
-            if(cHash == "2") closePlayer();
-            var gHash = getHashStringVar(PLUGIN_VAR_NAME);
-            if(gHash == "") gHash = 1;
-            _settings.startPluginGid = gHash;
-
-            $axure.player.settings = _settings;
-
-            $(window).bind('load', function() {
-                if(CHROME_5_LOCAL && !$('body').attr('pluginDetected')) {
-                    window.location = 'resources/chrome/chrome.html';
-                }
-            });
-
-            $(document).ready(function() {
-                $axure.page.bind('load.start', mainFrame_onload);
-                $axure.messageCenter.addMessageListener(messageCenter_message);
-
-                $(document).on('pluginShown', function (event, data) {
-                    setVarInCurrentUrlHash('g', data ? data : '');
-                });
-
-                $(document).on('pluginCreated', function(event, data) {
-                    if($axure.player.settings.startPluginGid == data) {
-                        $axure.player.showPlugin(data);
-                    }
-                });
-
-                if($axure.player.settings.loadFeedbackPlugin) {
-                    if($axure.player.settings.isAxshare) {
-                        $axure.utils.loadJS('/Scripts/plugins/feedback/feedback8.js');
-                    } else {
-                        $axure.utils.loadJS('http://share.axure.com/Scripts/plugins/feedback/feedback8.js');
-                    }
-                }
-
-                if(navigator.userAgent.indexOf("MSIE") >= 0) $('#outerContainer').width('100%');
-                initialize();
-                if($axure.player.settings.startCollapsed) $('#outerContainer').splitter({ sizeLeft: 0 });
-                else $('#outerContainer').splitter({ sizeLeft: lastLeftPanelWidth });
-                $('#leftPanel').width(lastLeftPanelWidth);
-                
-                $(window).resize(function() { resizeContent(); });
-
-                $('#maximizePanelContainer').hide();
-
-                initializeLogo();
-
-                $(window).resize();
-                resizeContent();
-                
-                $axure.player.collapseToBar();
-
-                if($axure.player.settings.startCollapsed) {
-                    collapse();
-                    $('#leftPanel').width(0);
-                }
-
-                if(MOBILE_DEVICE) {
-                    $('#interfaceControlFrameMinimizeContainer').height('45px');
-                    $('#interfaceControlFrameMinimizeContainer a').height('45px');
-                    $('#interfaceControlFrameHeaderContainer').css('margin-top','45px');
-                    $('#interfaceControlFrameCloseContainer a').css('padding','10px 0px');
-                    $('#maximizePanelContainer').height('45px');//.css('top','inherit').css('bottom','0px');
-
-                    $('body').removeClass('hashover');
-
-                    if(IOS) {
-                        $('#rightPanel').css('overflow', 'auto').css('-webkit-overflow-scrolling', 'touch').css('-ms-overflow-x', 'hidden');
-
-                        window.addEventListener("orientationchange", function() {
-                            var viewport = document.querySelector("meta[name=viewport]");
-                            //so iOS doesn't zoom when switching back to portrait
-                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0');
-                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-                            resizeContent();
-                        }, false);
-
-                        $axure.page.bind('load.start', function() {
-                            resizeContent();
-                        });
-                    }
-                }
-
-            });
-
-            function initialize() {
-                var legacyQString = getQueryString("Page");
-                if (legacyQString.length > 0) {
-                    location.href = location.href.substring(0, location.href.indexOf("?")) + "#p=" + legacyQString;
-                    return;
-                }
-
-                var mainFrame = document.getElementById("mainFrame");
-                mainFrame.contentWindow.location.href = getInitialUrl();
-            }
-
-            function initializeLogo() {
-                if($axure.document.configuration.logoImagePath) {
-                    var image = new Image();
-                    image.onload = function() {
-                        $('#logoImage').css('max-width', this.width + 'px');
-                        $axure.player.resizeContent();
-                    };
-                    image.src = $axure.document.configuration.logoImagePath;
-                
-                    $('#interfaceControlFrameLogoImageContainer').html('<img id="logoImage" src="" />');
-                    $('#logoImage').attr('src', $axure.document.configuration.logoImagePath).load(function() { resizeContent(); });
-                } else $('#interfaceControlFrameLogoImageContainer').hide();
-
-                if ($axure.document.configuration.logoImageCaption) {
-                    $('#interfaceControlFrameLogoCaptionContainer').html($axure.document.configuration.logoImageCaption);
-                } else $('#interfaceControlFrameLogoCaptionContainer').hide();
-
-                if(!$('#interfaceControlFrameLogoImageContainer').is(':visible') && !$('#interfaceControlFrameLogoCaptionContainer').is(':visible')) {
-                    $('#interfaceControlFrameLogoContainer').hide();
-                }
-            }
-
-            var resizeContent = $axure.player.resizeContent = function() {
-                var newHeight = $(window).height();
-                var newWidth = $(window).width();
-
-                var controlContainerHeight = newHeight;// - 30;
-                if($('#interfaceControlFrameLogoContainer').is(':visible')) controlContainerHeight -= $('#interfaceControlFrameLogoContainer').outerHeight();// + 16;
-
-                $('#outerContainer').height(newHeight).width(newWidth);
-                $('.vsplitbar').height(newHeight);
-                $('#leftPanel').height(newHeight);
-                $('#interfaceControlFrame').height(newHeight);
-                $('#interfaceControlFrameContainer').height(newHeight);
-                $('#interfaceControlFrameHostContainer').height(controlContainerHeight);
-
-                $('#rightPanel').height(newHeight);
-                $('#mainFrame').height(newHeight);
-
-                if($('#leftPanel').is(':visible')) $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);// $('.vsplitbar').width());
-                else $('#rightPanel').width($(window).width());
-
-                $(document).trigger('ContainerHeightChange',[controlContainerHeight]);
-
-                if(MOBILE_DEVICE) {
-                    if(!(getHashStringVar(ADAPTIVE_VIEW_VAR_NAME).length > 0)) $axure.messageCenter.postMessage('setAdaptiveViewForSize', {'width':newWidth, 'height':$('#rightPanel').height()});
-                }
-            }
-
-            var collapseToBar = $axure.player.collapseToBar = function() {
-                lastLeftPanelWidth = $('#leftPanel').width();
-                $('#leftPanel').width('55px');
-                $('.vsplitbar').hide();
-                $('#rightPanel').width($(window).width() - $('#leftPanel').width());
-                $(window).resize();
-                $('#outerContainer').trigger('resize');
-                toolBarOnly = true;
-            }
-
-            var expandFromBar = $axure.player.expandFromBar = function() {
-                if($('.vsplitbar').is(':visible')) return;
-
-                $('#leftPanel').width(lastLeftPanelWidth);
-                $('.vsplitbar').show();
-                $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);// $('.vsplitbar').width());
-                $(window).resize();
-                $('#outerContainer').trigger('resize');
-                toolBarOnly = false;
-            }
-
-        })();
-
-        function messageCenter_message(message, data) {
-            if(message == 'expandFrame') expand();
-            else if(message == 'getCollapseFrameOnLoad' && $axure.player.settings.startCollapsed && !MOBILE_DEVICE) $axure.messageCenter.postMessage('collapseFrameOnLoad');
-        }
-
-        
-        function getInitialUrl() {
-            var pageName = getHashStringVar("p");
-            if(pageName.length > 0) return pageName + ".html";
-            else {
-                var url = getFirstPageUrl($axure.document.sitemap.rootNodes);
-                return (url ? url : "about:blank");
-            }
-        }
-
-        function getFirstPageUrl(nodes) {
-            for (var i = 0; i < nodes.length; i++) {
-                var node = nodes[i];
-                if (node.url) return node.url;
-                else {
-                    var hasChildren = (node.children && node.children.length > 0);
-                    if (hasChildren) {
-                        var url = getFirstPageUrl(node.children);
-                        if (url) return url;
-                    }
-                }
-            }
-            return null;
-        }
-
-        function closePlayer() {
-            if($axure.page.location) window.location.href = $axure.page.location;
-            else {
-                var pageFile = getInitialUrl();
-                var currentLocation = window.location.toString();
-                window.location.href = currentLocation.substr(0, currentLocation.lastIndexOf("/") + 1) + pageFile;
-            }
-        }
-
-        function replaceHash(newHash) {
-            var currentLocWithoutHash = window.location.toString().split('#')[0];
-
-            //We use replace so that every hash change doesn't get appended to the history stack.
-            //We use replaceState in browsers that support it, else replace the location
-            if(typeof window.history.replaceState != 'undefined') {
-                try {
-                    //Chrome 45 (Version 45.0.2454.85 m) started throwing an error here when generated locally (this only happens with sitemap open) which broke all interactions.
-                    //try catch breaks the url adjusting nicely when the sitemap is open, but all interactions and forward and back buttons work.
-                    //Uncaught SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'file:///C:/Users/Ian/Documents/Axure/HTML/Untitled/start.html#p=home' cannot be created in a document with origin 'null'.
-                    window.history.replaceState(null, null, currentLocWithoutHash + newHash);
-                } catch(ex) {}
-            } else {
-                window.location.replace(currentLocWithoutHash + newHash);
-            }
-        }
-
-        function collapse() {
-            setVarInCurrentUrlHash('c', 1);
-            if(!toolBarOnly) lastLeftPanelWidth = $('#leftPanel').width();
-
-            $('#maximizePanelContainer').show();
-            $('#leftPanel').hide();
-            $('.vsplitbar').hide();
-            $('#rightPanel').width($(window).width());
-            $(window).resize();
-            $('#outerContainer').trigger('resize');
-
-            $(document).trigger('sidebarCollapse');
-
-            if(MOBILE_DEVICE) {
-                $('#maximizePanelContainer').animate({
-                    top:$('#rightPanel').height() - $('#maximizePanelContainer').height()
-                }, 300, 'swing', function() {
-                    $('#maximizePanelContainer').css('top', 'inherit').css('bottom', '0px');
-                });
-            }
-        }
-
-        function expand() {
-            if(MOBILE_DEVICE) {
-                $('#maximizePanelContainer').css('top', '0px').css('bottom', 'inherit');
-            }
-
-            deleteVarFromCurrentUrlHash('c');
-            $('#maximizePanelContainer').hide();
-            $('#leftPanel').width(lastLeftPanelWidth);
-            $('#leftPanel').show();
-            if(!toolBarOnly) {
-                $('.vsplitbar').show();
-                $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);
-            } else {
-                $axure.player.collapseToBar();
-            }
-            $(window).resize();
-            $('#outerContainer').trigger('resize');
-
-            $(document).trigger('sidebarExpanded');
-        }
-
-
-        function mainFrame_onload() {
-            if($axure.page.pageName) document.title = $axure.page.pageName;
-        }
-
-        function getQueryString(query) {
-            var qstring = self.location.href.split("?");
-            if(qstring.length < 2) return "";
-            return GetParameter(qstring, query);
-        }
-        
-        function GetParameter(qstring, query) {
-            var prms = qstring[1].split("&");
-            var frmelements = new Array();
-            var currprmeter, querystr = "";
-
-            for(var i = 0; i < prms.length; i++) {
-                currprmeter = prms[i].split("=");
-                frmelements[i] = new Array();
-                frmelements[i][0] = currprmeter[0];
-                frmelements[i][1] = currprmeter[1];
-            }
-
-            for(j = 0; j < frmelements.length; j++) {
-                if(frmelements[j][0].toLowerCase() == query.toLowerCase()) {
-                    querystr = frmelements[j][1];
-                    break;
-                }
-            }
-            return querystr;
-        }
-        
-        function getHashStringVar(query) {
-            var qstring = self.location.href.split("#");
-            if(qstring.length < 2) return "";
-            return GetParameter(qstring, query);
-        }
-
-        function setHashStringVar(currentHash, varName, varVal) {
-            var varWithEqual = varName + '=';
-            var poundVarWithEqual = varVal === '' ? '' :  '#' + varName + '=' + varVal;
-            var ampVarWithEqual = varVal === '' ? '' :  '&' + varName + '=' + varVal;
-            var hashToSet = '';
-
-            var pageIndex = currentHash.indexOf('#' + varWithEqual);
-            if(pageIndex == -1) pageIndex = currentHash.indexOf('&' + varWithEqual);
-            if(pageIndex != -1) {
-                var newHash = currentHash.substring(0, pageIndex);
-
-                newHash = newHash == '' ? poundVarWithEqual : newHash + ampVarWithEqual;
-
-                var ampIndex = currentHash.indexOf('&', pageIndex + 1);
-                if(ampIndex != -1) {
-                    newHash = newHash == '' ? '#' + currentHash.substring(ampIndex + 1) : newHash + currentHash.substring(ampIndex);
-                }
-                hashToSet = newHash;
-            } else if(currentHash.indexOf('#') != -1) {
-                hashToSet = currentHash + ampVarWithEqual;
-            } else {
-                hashToSet = poundVarWithEqual;
-            }
-
-            if(hashToSet != '' || varVal == '') {
-                return hashToSet;
-            }
-
-            return null;
-        }
-
-        function setVarInCurrentUrlHash(varName, varVal) {
-            var newHash = setHashStringVar(window.location.hash, varName, varVal);
-
-            if(newHash != null) {
-                replaceHash(newHash);
-            }
-        }
-
-        function deleteHashStringVar(currentHash, varName) {
-            var varWithEqual = varName + '=';
-
-            var pageIndex = currentHash.indexOf('#' + varWithEqual);
-            if(pageIndex == -1) pageIndex = currentHash.indexOf('&' + varWithEqual);
-            if(pageIndex != -1) {
-                var newHash = currentHash.substring(0, pageIndex);
-
-                var ampIndex = currentHash.indexOf('&', pageIndex + 1);
-
-                //IF begin of string....if none blank, ELSE # instead of & and rest
-                //IF in string....prefix + if none blank, ELSE &-rest
-                if(newHash == '') { //beginning of string
-                    newHash = ampIndex != -1 ? '#' + currentHash.substring(ampIndex + 1) : '';
-                } else { //somewhere in the middle
-                    newHash = newHash + (ampIndex != -1 ? currentHash.substring(ampIndex) : '');
-                }
-
-                return newHash;
-            }
-
-            return null;
-        }
-
-        function deleteVarFromCurrentUrlHash(varName) {
-            var newHash = deleteHashStringVar(window.location.hash, varName);
-
-            if(newHash != null) {
-                replaceHash(newHash);
-            }
-        }
-    --></script>
-
-    <link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
-    <script type="text/javascript" src="plugins/sitemap/sitemap.js"></script>
-    <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
-    <script type="text/javascript" src="plugins/page_notes/page_notes.js"></script>
-    <!--<link type="text/css" rel="Stylesheet" href="plugins/recordplay/styles/recordplay.css" />
-    <script type="text/javascript" src="plugins/recordplay/recordplay.js"></script>-->
-    <link type="text/css" rel="Stylesheet" href="plugins/debug/styles/debug.css" />
-    <script type="text/javascript" src="plugins/debug/debug.js"></script>
-
-</head>
-<body scroll="no" class="hashover">
-    <div id="outerContainer">
-
-        <div id="leftPanel">
-            <div id="interfaceControlFrame">
-                <div id="interfaceControlFrameMinimizeContainer">
-                    <a title="Collapse" id="interfaceControlFrameMinimizeButton" onclick="collapse();">&nbsp;</a>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u0" class="ax_default box_1">
+        <div id="u0_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u1" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u2" class="ax_default box_1">
+        <div id="u2_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u3" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u4" class="ax_default" data-width="915" data-height="184">
+
+        <!-- Unnamed (Group) -->
+        <div id="u5" class="ax_default" data-width="564" data-height="184">
+
+          <!-- Unnamed (Group) -->
+          <div id="u6" class="ax_default" data-width="253" data-height="184">
+
+            <!-- Unnamed (Group) -->
+            <div id="u7" class="ax_default" data-width="169" data-height="184">
+
+              <!-- Unnamed (Group) -->
+              <div id="u8" class="ax_default" data-width="80" data-height="184">
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u9" class="ax_default box_1">
+                  <div id="u9_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u10" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
                 </div>
-                <div id="interfaceControlFrameHeaderContainer">
-                    <ul id="interfaceControlFrameHeader"></ul>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u11" class="ax_default box_1">
+                  <div id="u11_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u12" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
                 </div>
-                <div id="interfaceControlFrameContainer">
-                    <div id="interfaceControlFrameLogoContainer">
-                        <div id="interfaceControlFrameLogoImageContainer"></div>
-                        <div id="interfaceControlFrameLogoCaptionContainer"></div>
-                    </div>
-                    <div id="interfaceControlFrameHostContainer">
-                    </div>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u13" class="ax_default box_1">
+                  <div id="u13_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u14" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
                 </div>
-                <div id="interfaceControlFrameCloseContainer">
-                    <a title="Close" id="interfaceControlFrameCloseButton" onclick="closePlayer();">CLOSE</a>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u15" class="ax_default box_1">
+                  <div id="u15_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u16" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
                 </div>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u17" class="ax_default box_1">
+                  <div id="u17_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u18" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u19" class="ax_default box_1">
+                  <div id="u19_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u20" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u21" class="ax_default box_1">
+                  <div id="u21_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u22" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
+                </div>
+
+                <!-- Unnamed (Rectangle) -->
+                <div id="u23" class="ax_default box_1">
+                  <div id="u23_div" class=""></div>
+                  <!-- Unnamed () -->
+                  <div id="u24" class="text" style="display:none; visibility: hidden">
+                    <p><span></span></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u25" class="ax_default box_1">
+                <div id="u25_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u26" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u27" class="ax_default box_1">
+                <div id="u27_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u28" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u29" class="ax_default box_1">
+                <div id="u29_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u30" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u31" class="ax_default box_1">
+                <div id="u31_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u32" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u33" class="ax_default box_1">
+                <div id="u33_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u34" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u35" class="ax_default box_1">
+                <div id="u35_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u36" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u37" class="ax_default box_1">
+                <div id="u37_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u38" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u39" class="ax_default box_1">
+                <div id="u39_div" class=""></div>
+                <!-- Unnamed () -->
+                <div id="u40" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
+              </div>
             </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u41" class="ax_default box_1">
+              <div id="u41_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u42" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u43" class="ax_default box_1">
+              <div id="u43_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u44" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u45" class="ax_default box_1">
+              <div id="u45_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u46" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u47" class="ax_default box_1">
+              <div id="u47_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u48" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u49" class="ax_default box_1">
+              <div id="u49_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u50" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u51" class="ax_default box_1">
+              <div id="u51_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u52" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u53" class="ax_default box_1">
+              <div id="u53_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u54" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u55" class="ax_default box_1">
+              <div id="u55_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u56" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u57" class="ax_default box_1">
+            <div id="u57_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u58" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u59" class="ax_default box_1">
+            <div id="u59_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u60" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u61" class="ax_default box_1">
+            <div id="u61_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u62" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u63" class="ax_default box_1">
+            <div id="u63_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u64" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u65" class="ax_default box_1">
+            <div id="u65_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u66" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u67" class="ax_default box_1">
+            <div id="u67_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u68" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u69" class="ax_default box_1">
+            <div id="u69_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u70" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u71" class="ax_default box_1">
+            <div id="u71_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u72" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u73" class="ax_default box_1">
+            <div id="u73_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u74" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u75" class="ax_default box_1">
+            <div id="u75_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u76" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u77" class="ax_default box_1">
+            <div id="u77_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u78" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u79" class="ax_default box_1">
+            <div id="u79_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u80" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u81" class="ax_default box_1">
+            <div id="u81_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u82" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u83" class="ax_default box_1">
+            <div id="u83_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u84" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u85" class="ax_default box_1">
+            <div id="u85_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u86" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u87" class="ax_default box_1">
+            <div id="u87_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u88" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u89" class="ax_default" data-width="132" data-height="184">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u90" class="ax_default box_1">
+              <div id="u90_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u91" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u92" class="ax_default box_1">
+              <div id="u92_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u93" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u94" class="ax_default box_1">
+              <div id="u94_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u95" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u96" class="ax_default box_1">
+              <div id="u96_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u97" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u98" class="ax_default box_1">
+              <div id="u98_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u99" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u100" class="ax_default box_1">
+              <div id="u100_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u101" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u102" class="ax_default box_1">
+              <div id="u102_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u103" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u104" class="ax_default box_1">
+              <div id="u104_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u105" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u106" class="ax_default box_1">
+              <div id="u106_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u107" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u108" class="ax_default box_1">
+              <div id="u108_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u109" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u110" class="ax_default box_1">
+              <div id="u110_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u111" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u112" class="ax_default box_1">
+              <div id="u112_div" class=""></div>
+              <!-- Unnamed () -->
+              <div id="u113" class="text" style="display:none; visibility: hidden">
+                <p><span></span></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="rightPanel">
-            <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+        <!-- Unnamed (Group) -->
+        <div id="u114" class="ax_default" data-width="138" data-height="184">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u115" class="ax_default box_1">
+            <div id="u115_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u116" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u117" class="ax_default box_1">
+            <div id="u117_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u118" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u119" class="ax_default box_1">
+            <div id="u119_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u120" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u121" class="ax_default box_1">
+            <div id="u121_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u122" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u123" class="ax_default box_1">
+            <div id="u123_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u124" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u125" class="ax_default box_1">
+            <div id="u125_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u126" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u127" class="ax_default box_1">
+            <div id="u127_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u128" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u129" class="ax_default box_1">
+            <div id="u129_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u130" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u131" class="ax_default box_1">
+            <div id="u131_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u132" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u133" class="ax_default box_1">
+            <div id="u133_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u134" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u135" class="ax_default box_1">
+            <div id="u135_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u136" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u137" class="ax_default box_1">
+            <div id="u137_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u138" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
         </div>
 
-    </div>
+        <!-- Unnamed (Group) -->
+        <div id="u139" class="ax_default" data-width="124" data-height="184">
 
-    <div id="maximizePanelContainer">
-        <iframe id="expandFrame" src="resources/expand.html" width="100%" height="100%" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
-    </div>
+          <!-- Unnamed (Rectangle) -->
+          <div id="u140" class="ax_default box_1">
+            <div id="u140_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u141" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
 
-</body>
+          <!-- Unnamed (Rectangle) -->
+          <div id="u142" class="ax_default box_1">
+            <div id="u142_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u143" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u144" class="ax_default box_1">
+            <div id="u144_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u145" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u146" class="ax_default box_1">
+            <div id="u146_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u147" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u148" class="ax_default box_1">
+            <div id="u148_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u149" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u150" class="ax_default box_1">
+            <div id="u150_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u151" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u152" class="ax_default box_1">
+            <div id="u152_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u153" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u154" class="ax_default box_1">
+            <div id="u154_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u155" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u156" class="ax_default box_1">
+            <div id="u156_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u157" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u158" class="ax_default box_1">
+            <div id="u158_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u159" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u160" class="ax_default box_1">
+            <div id="u160_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u161" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u162" class="ax_default box_1">
+            <div id="u162_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u163" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Group) -->
+        <div id="u164" class="ax_default" data-width="89" data-height="184">
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u165" class="ax_default box_1">
+            <div id="u165_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u166" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u167" class="ax_default box_1">
+            <div id="u167_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u168" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u169" class="ax_default box_1">
+            <div id="u169_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u170" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u171" class="ax_default box_1">
+            <div id="u171_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u172" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u173" class="ax_default box_1">
+            <div id="u173_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u174" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u175" class="ax_default box_1">
+            <div id="u175_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u176" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u177" class="ax_default box_1">
+            <div id="u177_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u178" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Rectangle) -->
+          <div id="u179" class="ax_default box_1">
+            <div id="u179_div" class=""></div>
+            <!-- Unnamed () -->
+            <div id="u180" class="text" style="display:none; visibility: hidden">
+              <p><span></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u181" class="ax_default box_1">
+        <div id="u181_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u182" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u183" class="ax_default box_1">
+        <div id="u183_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u184" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Image) -->
+      <div id="u185" class="ax_default image">
+        <img id="u185_img" class="img " src="images/home/u185.jpg"/>
+        <!-- Unnamed () -->
+        <div id="u186" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u187" class="ax_default icon">
+        <img id="u187_img" class="img " src="images/home/u187.png"/>
+        <!-- Unnamed () -->
+        <div id="u188" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u189" class="ax_default box_1">
+        <div id="u189_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u190" class="text">
+          <p><span>Master of Arts</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u191" class="ax_default box_1">
+        <div id="u191_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u192" class="text">
+          <p><span>Integrated Digital Media Ethnography Lab</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u193" class="ax_default box_1">
+        <div id="u193_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u194" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u195" class="ax_default box_1">
+        <div id="u195_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u196" class="text">
+          <p><span>BSU Integrated Digital Media Ethnogrophy Lab</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u197" class="ax_default box_1">
+        <div id="u197_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u198" class="text">
+          <p><span style="font-family:'Bookman Old Style Bold', 'Bookman Old Style';font-weight:600;font-style:normal;">Integrated Digital Media EL,</span></p><p><span style="font-family:'Bookman Old Style';font-weight:300;font-style:normal;">&nbsp;</span><span style="font-family:'Bookman Old Style Bold', 'Bookman Old Style';font-weight:600;font-style:normal;">MA</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u199" class="ax_default box_1">
+        <img id="u199_img" class="img " src="images/home/u199.png"/>
+        <!-- Unnamed () -->
+        <div id="u200" class="text">
+          <p><span>Internships and Careers</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u201" class="ax_default box_1">
+        <img id="u201_img" class="img " src="images/home/u199.png"/>
+        <!-- Unnamed () -->
+        <div id="u202" class="text">
+          <p><span>Curriculum</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u203" class="ax_default box_1">
+        <img id="u203_img" class="img " src="images/home/u199.png"/>
+        <!-- Unnamed () -->
+        <div id="u204" class="text">
+          <p><span>Courses</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u205" class="ax_default box_1">
+        <img id="u205_img" class="img " src="images/home/u205.png"/>
+        <!-- Unnamed () -->
+        <div id="u206" class="text">
+          <p><span>What Our Students Say</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u207" class="ax_default line">
+        <img id="u207_img" class="img " src="images/home/u207.png"/>
+        <!-- Unnamed () -->
+        <div id="u208" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u209" class="ax_default line">
+        <img id="u209_img" class="img " src="images/home/u207.png"/>
+        <!-- Unnamed () -->
+        <div id="u210" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u211" class="ax_default line">
+        <img id="u211_img" class="img " src="images/home/u207.png"/>
+        <!-- Unnamed () -->
+        <div id="u212" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u213" class="ax_default line">
+        <img id="u213_img" class="img " src="images/home/u207.png"/>
+        <!-- Unnamed () -->
+        <div id="u214" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u215" class="ax_default line">
+        <img id="u215_img" class="img " src="images/home/u207.png"/>
+        <!-- Unnamed () -->
+        <div id="u216" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u217" class="ax_default box_1">
+        <div id="u217_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u218" class="text">
+          <p><span>Home / Academics / Majors and Programs</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u219" class="ax_default box_1">
+        <img id="u219_img" class="img " src="images/home/u219.png"/>
+        <!-- Unnamed () -->
+        <div id="u220" class="text">
+          <p><span>ADMISSIONS&nbsp; &nbsp; ACADEMICS&nbsp; &nbsp; RESEARCH&nbsp; &nbsp; OUTREACH&nbsp; &nbsp; STUDENT LIFE&nbsp; &nbsp; ABOUT</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u221" class="ax_default box_1">
+        <img id="u221_img" class="img " src="images/home/u221.png"/>
+        <!-- Unnamed () -->
+        <div id="u222" class="text">
+          <p><span>Search</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u223" class="ax_default line">
+        <img id="u223_img" class="img " src="images/home/u223.png"/>
+        <!-- Unnamed () -->
+        <div id="u224" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u225" class="ax_default icon">
+        <img id="u225_img" class="img " src="images/home/u225.png"/>
+        <!-- Unnamed () -->
+        <div id="u226" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u227" class="ax_default box_1">
+        <div id="u227_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u228" class="text">
+          <p><span style="color:#00CC00;">QUICKLINKS</span><span style="color:#FFFFFF;">&nbsp; &nbsp; &nbsp;&nbsp; STUDENTS&nbsp; &nbsp; ALUMNI&nbsp; &nbsp; FACULTY&nbsp; &nbsp; STAFF</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u229" class="ax_default icon">
+        <img id="u229_img" class="img " src="images/home/u229.png"/>
+        <!-- Unnamed () -->
+        <div id="u230" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u231" class="ax_default box_1">
+        <img id="u231_img" class="img " src="images/home/u231.png"/>
+        <!-- Unnamed () -->
+        <div id="u232" class="text">
+          <p><span>BSU ABU DHABI&nbsp; &nbsp; BSU Shanghai</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Image) -->
+      <div id="u233" class="ax_default image">
+        <img id="u233_img" class="img " src="images/home/u233.png"/>
+        <!-- Unnamed () -->
+        <div id="u234" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u235" class="ax_default box_1">
+        <img id="u235_img" class="img " src="images/home/u235.png"/>
+        <!-- Unnamed () -->
+        <div id="u236" class="text">
+          <p><span>BSU</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Vertical Line) -->
+      <div id="u237" class="ax_default line">
+        <img id="u237_img" class="img " src="images/home/u237.png"/>
+        <!-- Unnamed () -->
+        <div id="u238" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u239" class="ax_default box_1">
+        <img id="u239_img" class="img " src="images/home/u239.png"/>
+        <!-- Unnamed () -->
+        <div id="u240" class="text">
+          <p><span>P o l y e t h n i c&nbsp; I n s t i t u t e</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u241" class="ax_default box_1">
+        <img id="u241_img" class="img " src="images/home/u241.png"/>
+        <!-- Unnamed () -->
+        <div id="u242" class="text">
+          <p><span>HOCKENBERRY SCHOOL</span></p><p><span>OF ETHNOGRAPHY</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u243" class="ax_default box_1">
+        <img id="u243_img" class="img " src="images/home/u243.png"/>
+        <!-- Unnamed () -->
+        <div id="u244" class="text">
+          <p><span>Related Links</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u245" class="ax_default icon">
+        <img id="u245_img" class="img " src="images/home/u245.png"/>
+        <!-- Unnamed () -->
+        <div id="u246" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u247" class="ax_default icon">
+        <img id="u247_img" class="img " src="images/home/u245.png"/>
+        <!-- Unnamed () -->
+        <div id="u248" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u249" class="ax_default icon">
+        <img id="u249_img" class="img " src="images/home/u245.png"/>
+        <!-- Unnamed () -->
+        <div id="u250" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u251" class="ax_default box_1">
+        <img id="u251_img" class="img " src="images/home/u251.png"/>
+        <!-- Unnamed () -->
+        <div id="u252" class="text">
+          <p><span>Apply Now</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u253" class="ax_default box_1">
+        <img id="u253_img" class="img " src="images/home/u253.png"/>
+        <!-- Unnamed () -->
+        <div id="u254" class="text">
+          <p><span>Request Info</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u255" class="ax_default box_1">
+        <img id="u255_img" class="img " src="images/home/u255.png"/>
+        <!-- Unnamed () -->
+        <div id="u256" class="text">
+          <p><span>Brooklyn Ethnographic Research Center</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u257" class="ax_default box_1">
+        <img id="u257_img" class="img " src="images/home/u257.png"/>
+        <!-- Unnamed () -->
+        <div id="u258" class="text">
+          <p><span style="font-family:'Century Gothic';font-style:normal;">The academic programs in Integrated Digital Media Ethnogrophy Lab (IDMEL) at the Hockenberry School of Ethnography consist of both </span><span style="font-family:'Century Gothic';font-style:normal;color:#6699FF;">Bachelors</span><span style="font-family:'Century Gothic';font-style:normal;"> and </span><span style="font-family:'Century Gothic';font-style:normal;color:#6699FF;">Masters of Arts</span><span style="font-family:'Century Gothic';font-style:normal;"> degrees, as well as an </span><span style="font-family:'Century Gothic';font-style:normal;color:#6699FF;">accelerated BA/MA program</span><span style="font-family:'Century Gothic';font-style:normal;">. In these programs, digital media faculty and students from the NYU integrated Digital Media program are experimentally observed and explored in their spectrum of practices ranging from </span><span style="font-family:'Century Gothic Italic', 'Century Gothic';font-style:italic;">computer programming</span><span style="font-family:'Century Gothic';font-style:normal;"> to </span><span style="font-family:'Century Gothic Italic', 'Century Gothic';font-style:italic;">2D and 3D graphics</span><span style="font-family:'Century Gothic';font-style:normal;"> to </span><span style="font-family:'Century Gothic Italic', 'Century Gothic';font-style:italic;">photography, film, and audio</span><span style="font-family:'Century Gothic';font-style:normal;">. We provide the opportunity for students to conduct research on the lives of artists, designers, and creative technologists who are working in highly fluid industries that reward creativity, throughfullness, technical expertise, and innovation. Through our observation of the IDM students, our students have access to the widest range of observable subjects with varying interests out of any introspective ethnogrophy lab in the country.</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Group) -->
+      <div id="u259" class="ax_default" data-width="793" data-height="489">
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u260" class="ax_default box_1">
+          <div id="u260_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u261" class="text">
+            <p><span>Program Director</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u262" class="ax_default box_1">
+          <div id="u262_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u263" class="text">
+            <p><span>Department</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u264" class="ax_default icon">
+          <img id="u264_img" class="img " src="images/home/u245.png"/>
+          <!-- Unnamed () -->
+          <div id="u265" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u266" class="ax_default box_1">
+          <img id="u266_img" class="img " src="images/home/u266.png"/>
+          <!-- Unnamed () -->
+          <div id="u267" class="text">
+            <p><span>Technology, Culture, and Society Program Observations</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u268" class="ax_default icon">
+          <img id="u268_img" class="img " src="images/home/u245.png"/>
+          <!-- Unnamed () -->
+          <div id="u269" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u270" class="ax_default box_1">
+          <img id="u270_img" class="img " src="images/home/u270.png"/>
+          <!-- Unnamed () -->
+          <div id="u271" class="text">
+            <p><span>Mathew Hockenberry, Ph.D.</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u272" class="ax_default icon">
+          <img id="u272_img" class="img " src="images/home/u245.png"/>
+          <!-- Unnamed () -->
+          <div id="u273" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u274" class="ax_default box_1">
+          <img id="u274_img" class="img " src="images/home/u270.png"/>
+          <!-- Unnamed () -->
+          <div id="u275" class="text">
+            <p><span>B. Wynant Summers</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u276" class="ax_default box_1">
+          <img id="u276_img" class="img " src="images/home/u270.png"/>
+          <!-- Unnamed () -->
+          <div id="u277" class="text">
+            <p><span>Erik Dykema, J.D.</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Shape) -->
+        <div id="u278" class="ax_default icon">
+          <img id="u278_img" class="img " src="images/home/u245.png"/>
+          <!-- Unnamed () -->
+          <div id="u279" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u280" class="ax_default box_1">
+          <div id="u280_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u281" class="text">
+            <p><span>Academic Advisor</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u282" class="ax_default box_1">
+          <div id="u282_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u283" class="text">
+            <p><span style="font-family:'Arial Bold', 'Arial';font-style:normal;color:#660099;">ETHNOGRAPHY</span><span style="font-family:'Arial Bold', 'Arial';font-style:normal;"> </span><span style="font-family:'Arial Bold Italic', 'Arial';font-style:italic;">is</span><span style="font-family:'Arial Bold', 'Arial';font-style:normal;"> </span><span style="font-family:'Arial Bold', 'Arial';font-style:normal;color:#66CC66;">CREATIVE</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u284" class="ax_default box_1">
+          <div id="u284_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u285" class="text">
+            <p><span>Undergraduate Admissions</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u286" class="ax_default box_1">
+          <div id="u286_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u287" class="text">
+            <p><span>Graduate Admissions</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u288" class="ax_default box_1">
+          <div id="u288_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u289" class="text">
+            <p><span>Site Links</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u290" class="ax_default box_1">
+          <div id="u290_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u291" class="text">
+            <p><span>How&nbsp; to&nbsp; Apply</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u292" class="ax_default box_1">
+          <div id="u292_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u293" class="text">
+            <p><span>Apply Now</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u294" class="ax_default box_1">
+          <div id="u294_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u295" class="text">
+            <p><span>Learn More</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u296" class="ax_default box_1">
+          <div id="u296_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u297" class="text">
+            <p><span>admissions@bsu.edu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u298" class="ax_default box_1">
+          <div id="u298_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u299" class="text">
+            <p><span>Requirements</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u300" class="ax_default box_1">
+          <div id="u300_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u301" class="text">
+            <p><span>Learn More</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u302" class="ax_default box_1">
+          <div id="u302_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u303" class="text">
+            <p><span>Press</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u304" class="ax_default box_1">
+          <div id="u304_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u305" class="text">
+            <p><span>engineering.gradinfo@bsu.edu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u306" class="ax_default box_1">
+          <div id="u306_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u307" class="text">
+            <p><span>Directory</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u308" class="ax_default box_1">
+          <div id="u308_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u309" class="text">
+            <p><span>Directions</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u310" class="ax_default box_1">
+          <div id="u310_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u311" class="text">
+            <p><span>Event Calendar</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u312" class="ax_default box_1">
+          <div id="u312_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u313" class="text">
+            <p><span>Careers and HR</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u314" class="ax_default box_1">
+          <div id="u314_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u315" class="text">
+            <p><span>BSU School of Ethnography</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u316" class="ax_default box_1">
+          <div id="u316_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u317" class="text">
+            <p><span>6 Methrotech Center, Booklyn NY 11201</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u318" class="ax_default box_1">
+          <div id="u318_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u319" class="text">
+            <p><span>Tel: 646.997.XXXX</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u320" class="ax_default box_1">
+          <div id="u320_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u321" class="text">
+            <p><span>Fax: 646.997.XXXX</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u322" class="ax_default box_1">
+          <div id="u322_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u323" class="text">
+            <p><span>EMAIL / NETWORK</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u324" class="ax_default box_1">
+          <div id="u324_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u325" class="text">
+            <p><span>soehelpdesk@bsu.edu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u326" class="ax_default box_1">
+          <div id="u326_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u327" class="text">
+            <p><span>WEBSITE</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u328" class="ax_default box_1">
+          <div id="u328_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u329" class="text">
+            <p><span>ethnography.webteam@bsu.edu</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u330" class="ax_default box_1">
+          <div id="u330_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u331" class="text">
+            <p><span>Login (Faculty + Staff)</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (Rectangle) -->
+        <div id="u332" class="ax_default box_1">
+          <div id="u332_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u333" class="text">
+            <p><span>Apply Now</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u334" class="ax_default box_1">
+        <div id="u334_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u335" class="text">
+          <p><span>Technical Support</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
